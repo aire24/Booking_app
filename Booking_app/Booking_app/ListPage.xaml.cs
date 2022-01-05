@@ -30,5 +30,12 @@ namespace Booking_app
             await App.Database.DeleteReservationListAsync(rlist);
             await Navigation.PopAsync();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var reservationl = (ReservationList)BindingContext;
+
+            listView.ItemsSource = await App.Database.GetListClientsAsync(reservationl.ID);
+        }
     }
 }

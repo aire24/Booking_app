@@ -14,6 +14,27 @@ namespace Booking_app.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<ReservationList>().Wait();
+            _database.CreateTableAsync<Client>().Wait();
+            _database.CreateTableAsync<ListClient>().Wait();
+        }
+        public Task<int> SaveClientAsync(Client client)
+        {
+           if (client.ID != 0)
+            {
+                return _database.UpdateAsync(client);
+            }
+            else
+            {
+                return _database.InsertAsync(client);
+            }
+        }
+        public Task<int> DeleteClientAsync(Client client)
+        {
+            return _database.DeleteAsync(client);
+        }
+        public Task<List<Client>> GetClientsAsync()
+        {
+            return _database.Table<Client>().ToListAsync();
         }
         public Task<List<ReservationList>> GetReservationListsAsync()
         {
@@ -39,6 +60,25 @@ namespace Booking_app.Data
         public Task<int> DeleteReservationListAsync(ReservationList rlist)
         {
             return _database.DeleteAsync(rlist);
+        }
+        public Task<int> SaveListClientAsync(ListClient listc)
+        {
+            if (listc.ID != 0)
+            {
+                return _database.UpdateAsync(listc);
+            }
+            else
+            {
+                return _database.InsertAsync(listc);
+            }
+        }
+        public Task<List<Client>> GetListClientsAsync(int reservationlistid)
+        {
+            return _database.QueryAsync<Client>(
+            "select C.ID, C.Description from Client C"
+            + " inner join LiClient LC"
+            + " on C.ID = LC.ClientID where LC.ReservationListID = ?",
+            reservationlistid);
         }
     }
 }
