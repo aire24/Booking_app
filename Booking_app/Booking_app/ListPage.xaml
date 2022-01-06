@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Booking_app.ListPage">
     <ContentPage.Content>
-        <StackLayout Margin="20">
+        <StackLayout >
             <Editor Placeholder=""
-                Text="{Binding Description}"
-                HeightRequest="100"/>
+                Text="{Binding Description}"/>
             <Button Text="Add/Choose Name" Clicked="OnChooseButtonClicked"/>
             <Button Text="Add/Choose Email" Clicked="OnChooseButtonClicked"/>
             <Button Text="Add/Choose Arrival Date" Clicked="OnChooseButtonClicked"/>
@@ -18,12 +17,11 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />
-                <Button Grid.Column="1"
-                    Text="Delete"
-                    Clicked="OnDeleteButtonClicked"/>
-                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
+                <Button Text="Save" 
+                        Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete"
+                        Clicked="OnDeleteButtonClicked"/>
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Detail="{Binding Description}" />

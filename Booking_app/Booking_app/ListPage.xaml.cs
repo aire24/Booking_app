@@ -12,7 +12,7 @@ namespace Booking_app
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListPage : ContentPage
-    {
+    { 
         public ListPage()
         {
             InitializeComponent();

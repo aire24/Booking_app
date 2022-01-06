@@ -38,7 +38,6 @@ namespace Booking_app
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
             Client c;
             if (e.SelectedItem != null)
             {
@@ -50,7 +49,6 @@ namespace Booking_app
                 };
                 await App.Database.SaveListClientAsync(lc);
                 c.ListClients = new List<ListClient> { lc };
-
                 await Navigation.PopAsync();
             }
         }
