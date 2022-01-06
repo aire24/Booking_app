@@ -8,11 +8,13 @@
                 Text="{Binding Description}"/>
             <Button Text="Add/Choose Name" Clicked="OnChooseButtonClicked"/>
             <Button Text="Add/Choose Email" Clicked="OnChooseButtonClicked"/>
-            <Button Text="Add/Choose Arrival Date" Clicked="OnChooseButtonClicked"/>
-            <Button Text="Add/Choose Departure Date" Clicked="OnChooseButtonClicked"/>
             <Button Text="Add/Choose A Room" Clicked="OnChooseButtonClicked"/>
             <Button Text="Add/Choose No. Of People" Clicked="OnChooseButtonClicked"/>
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

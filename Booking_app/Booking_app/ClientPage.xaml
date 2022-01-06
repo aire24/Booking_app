@@ -4,7 +4,7 @@
              x:Class="Booking_app.ClientPage">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <Editor Placeholder="Enter the description of the reservation" Margin="20"
+            <Editor Placeholder="Enter the description of the reservation" 
                     Text="{Binding Description}"
                     HeightRequest="50" />
             <Grid>
@@ -20,7 +20,7 @@
                         Clicked="OnSaveButtonClicked" />
                 <Button Grid.Column="1" Text="Delete"
                         Clicked="OnDeleteButtonClicked"/>
-                <ListView Grid.Row="1" x:Name="listView" Margin="20" 
+                <ListView Grid.Row="1" x:Name="listView"
                         ItemSelected="OnListViewItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
