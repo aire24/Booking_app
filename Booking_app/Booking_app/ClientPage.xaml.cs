@@ -19,13 +19,22 @@ namespace Booking_app
             InitializeComponent();
             rl = rlist;
         }
-        async void OnChooseButtonClicked(object sender, EventArgs e)
+        async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ClientPage((ReservationList)
-           this.BindingContext)
-            {
-                BindingContext = new Client()
-            });
+            var client = (Client)BindingContext;
+            await App.Database.SaveClientAsync(client);
+            listView.ItemsSource = await App.Database.GetClientsAsync();
+        }
+        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            var client = (Client)BindingContext;
+            await App.Database.DeleteClientAsync(client);
+            listView.ItemsSource = await App.Database.GetClientsAsync();
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            listView.ItemsSource = await App.Database.GetClientsAsync();
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -44,23 +53,6 @@ namespace Booking_app
 
                 await Navigation.PopAsync();
             }
-            async void OnSaveButtonClicked(object sender, EventArgs e)
-            {
-                var client = (Client)BindingContext;
-                await App.Database.SaveClientAsync(client);
-                listView.ItemsSource = await App.Database.GetClientsAsync();
-            }
-            async void OnDeleteButtonClicked(object sender, EventArgs e)
-            {
-                var client = (Client)BindingContext;
-                await App.Database.DeleteClientAsync(client);
-                listView.ItemsSource = await App.Database.GetClientsAsync();
-            }
-        }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetClientsAsync();
         }
     }
 }

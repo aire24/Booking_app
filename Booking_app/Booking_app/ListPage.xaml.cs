@@ -37,5 +37,13 @@ namespace Booking_app
 
             listView.ItemsSource = await App.Database.GetListClientsAsync(reservationl.ID);
         }
+        async void OnChooseButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ClientPage((ReservationList)
+           this.BindingContext)
+            {
+                BindingContext = new Client()
+            });
+        }
     }
 }

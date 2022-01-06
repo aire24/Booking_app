@@ -4,26 +4,32 @@
              x:Class="Booking_app.ListPage">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <Editor Placeholder="Enter the description of the shopping list"
- Text="{Binding Description}"
- HeightRequest="100" />
-            <Button Text="Add/Choose Item to buy" Clicked="OnChooseButtonClicked"/>
-            
+            <Editor Placeholder=""
+                Text="{Binding Description}"
+                HeightRequest="100"/>
+            <Button Text="Add/Choose Name" Clicked="OnChooseButtonClicked"/>
+            <Button Text="Add/Choose Email" Clicked="OnChooseButtonClicked"/>
+            <Button Text="Add/Choose Arrival Date" Clicked="OnChooseButtonClicked"/>
+            <Button Text="Add/Choose Departure Date" Clicked="OnChooseButtonClicked"/>
+            <Button Text="Add/Choose A Room" Clicked="OnChooseButtonClicked"/>
+            <Button Text="Add/Choose No. Of People" Clicked="OnChooseButtonClicked"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Text="Save"
- Clicked="OnSaveButtonClicked" />
-                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+                    Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1"
+                    Text="Delete"
+                    Clicked="OnDeleteButtonClicked"/>
                 <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Detail="{Binding Description}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+                </ListView>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

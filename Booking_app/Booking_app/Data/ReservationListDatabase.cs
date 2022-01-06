@@ -76,7 +76,7 @@ namespace Booking_app.Data
         {
             return _database.QueryAsync<Client>(
             "select C.ID, C.Description from Client C"
-            + " inner join LiClient LC"
+            + " inner join ListClient LC"
             + " on C.ID = LC.ClientID where LC.ReservationListID = ?",
             reservationlistid);
         }
