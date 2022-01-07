@@ -8,6 +8,21 @@ namespace Booking_app
 {
     public partial class App : Application
     {
+        static RoomListDatabase database1;
+        public static RoomListDatabase Database1
+        {
+            get
+            {
+                if (database1 == null)
+                {
+                    database1 = new
+                   RoomListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                   LocalApplicationData), "RoomList.db3"));
+                }
+                return database1;
+            }
+        }
+
         static ReservationListDatabase database;
         public static ReservationListDatabase Database
         {
